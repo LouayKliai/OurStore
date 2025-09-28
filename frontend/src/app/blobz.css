@@ -1,0 +1,73 @@
+/* Blobz - Pure CSS Animated Blobs */
+.tk-blob {
+  --time: 30s;
+  --amount: 2;
+  --fill: #000;
+  position: relative;
+  width: 100%;
+}
+
+.tk-blob svg {
+  width: 100%;
+  height: 100%;
+  animation: blob var(--time) ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+.tk-blob svg path {
+  fill: var(--fill);
+  animation: blob-skew var(--time) ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(calc(var(--amount) * 10px), calc(var(--amount) * -15px)) scale(calc(1 + var(--amount) * 0.05));
+  }
+  66% {
+    transform: translate(calc(var(--amount) * -12px), calc(var(--amount) * 8px)) scale(calc(1 - var(--amount) * 0.03));
+  }
+}
+
+@keyframes blob-skew {
+  0%, 100% {
+    transform: skewX(0deg) skewY(0deg);
+  }
+  25% {
+    transform: skewX(calc(var(--amount) * 1deg)) skewY(calc(var(--amount) * 0.5deg));
+  }
+  50% {
+    transform: skewX(calc(var(--amount) * -1.5deg)) skewY(calc(var(--amount) * -1deg));
+  }
+  75% {
+    transform: skewX(calc(var(--amount) * 0.5deg)) skewY(calc(var(--amount) * 1.5deg));
+  }
+}
+
+/* Additional blob variations */
+.tk-blob-2 {
+  --time: 25s;
+  --amount: 3;
+  animation-delay: -5s;
+}
+
+.tk-blob-3 {
+  --time: 35s;
+  --amount: 1.5;
+  animation-delay: -10s;
+}
+
+.tk-blob-4 {
+  --time: 20s;
+  --amount: 4;
+  animation-delay: -15s;
+}
+
+.tk-blob-5 {
+  --time: 40s;
+  --amount: 2.5;
+  animation-delay: -8s;
+}

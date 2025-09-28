@@ -1,0 +1,337 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "view": "Voir",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "clear": "Effacer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "viewDetails": "Voir les détails",
+    "noProductsFound": "Aucun produit trouvé",
+    "noProductsAvailable": "Il n'y a pas de produits disponibles pour le moment. Veuillez revenir plus tard."
+  },
+  "navigation": {
+    "home": "Accueil",
+    "products": "Produits",
+    "categories": "Catégories",
+    "about": "À propos",
+    "contact": "Contactez-nous",
+    "cart": "Panier",
+    "profile": "Profil",
+    "admin": "Administration",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "register": "S'inscrire",
+    "language": "Langue"
+  },
+  "header": {
+    "brand": "OurStore",
+    "tagline": "Votre partenaire e-commerce de confiance",
+    "searchPlaceholder": "Rechercher des produits...",
+    "cartItems": "{count} articles",
+    "adminPanel": "Panneau d'administration"
+  },
+  "hero": {
+    "title": "Découvrez des produits exceptionnels",
+    "subtitle": "Qualité premium, service excellent, livraison rapide",
+    "cta": "Découvrir nos produits",
+    "learnMore": "En savoir plus",
+    "scroll_indicator": "Explorer les produits",
+    "viewAllProducts": "Voir tous les produits",
+    "trust": {
+      "title": "Pourquoi choisir OurStore ?",
+      "indicators": {
+        "free_shipping": "Livraison gratuite",
+        "quality_products": "Produits de haute qualité",
+        "secure_payment": "Paiement sécurisé",
+        "customer_support": "Service client",
+        "quality_products_description": "Produits soigneusement sélectionnés",
+        "fast_delivery": "Livraison rapide",
+        "fast_delivery_description": "Livraison rapide",
+        "trusted_service": "Service de confiance",
+        "trusted_service_description": "Satisfaction client"
+      }
+    }
+  },
+  "products": {
+    "title": "Nos Produits",
+    "featured": "Produits vedettes",
+    "newArrivals": "Nouveautés",
+    "bestsellers": "Meilleures ventes",
+    "onSale": "En promotion",
+    "price": "Prix",
+    "addToCart": "Ajouter au panier",
+    "outOfStock": "Rupture de stock",
+    "inStock": "En stock",
+    "quickView": "Aperçu rapide",
+    "compareProducts": "Comparer les produits",
+    "productDetails": "Détails du produit",
+    "specifications": "Spécifications",
+    "reviews": "Avis clients",
+    "relatedProducts": "Produits similaires",
+    "categories": {
+      "title": "Catégories",
+      "subtitle": "Explorez les différentes catégories",
+      "clothes": "Vêtements",
+      "tech": "Technologie",
+      "technology": "Technologie",
+      "beauty_perfumes": "Beauté & Parfums",
+      "clothes_description": "Vêtements élégants et confortables pour toutes les occasions",
+      "tech_description": "Derniers gadgets et accessoires technologiques",
+      "beauty_perfumes_description": "Produits de beauté et parfums haut de gamme",
+      "shop": "Acheter",
+      "featuredProducts": "Produits vedettes"
+    },
+    "save": "Économisez",
+    "backToProducts": "Retour aux produits",
+    "clickThumbnails": "Cliquez sur les vignettes ou utilisez les flèches pour voir différents angles",
+    "color": "Couleur",
+    "size": "Taille",
+    "quantity": "Quantité",
+    "total": "Total",
+    "orderNow": "Commander maintenant - Chat en direct",
+    "subtitle": "Parcourez notre gamme complète de produits de haute qualité dans toutes les catégories",
+    "all": "Tous les produits",
+    "found": "Trouvé {count} produit"
+  },
+  "bestSellers": {
+    "title": "Meilleures ventes",
+    "subtitle": "Nos produits les plus populaires appréciés par les clients",
+    "viewAllProducts": "Voir tous les produits"
+  },
+  "cart": {
+    "title": "Mon Panier",
+    "empty": "Votre panier est vide",
+    "subtotal": "Sous-total",
+    "total": "Total",
+    "shipping": "Livraison",
+    "tax": "TVA",
+    "checkout": "Passer commande",
+    "continueShopping": "Continuer les achats",
+    "removeItem": "Supprimer l'article",
+    "updateQuantity": "Mettre à jour la quantité",
+    "quantity": "Quantité",
+    "itemsCount": "{count} articles dans le panier",
+    "noOrders": "Aucune commande pour le moment",
+    "noOrdersDescription": "Votre historique de commandes apparaîtra ici. Commencez à magasiner pour voir vos commandes et suivre leur statut.",
+    "startShopping": "Commencer à magasiner",
+    "orderSummary": "Résumé de la commande",
+    "itemsOrdered": "Articles commandés",
+    "color": "Couleur",
+    "qty": "Quantité",
+    "unit": "Unité",
+    "backToProducts": "Retour aux produits",
+    "customerInformation": "Informations client",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Shipping Address",
+    "items": "Items",
+    "totalItems": "Total Items",
+    "totalPrice": "Total Price",
+    "clearAll": "Clear All",
+    "orders": "Orders"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour vous aider",
+    "form": {
+      "yourOrder": "Votre commande",
+      "quantity": "Quantité",
+      "color": "Couleur",
+      "size": "Taille",
+      "autoFillLoaded": "Informations de contact chargées",
+      "autoFillDescription": "Nous avons pré-rempli vos détails à partir de votre dernière commande. Vous pouvez les modifier si nécessaire.",
+      "cancel": "Annuler",
+      "clear": "Effacer",
+      "title": "Formulaire de contact",
+      "name": {
+        "label": "Nom complet",
+        "placeholder": "Entrez votre nom complet"
+      },
+      "email": {
+        "label": "Adresse e-mail",
+        "placeholder": "Entrez votre adresse e-mail"
+      },
+      "subject": {
+        "label": "Sujet",
+        "placeholder": "Choisissez un sujet",
+        "options": {
+          "general": "Général",
+          "support": "Support",
+          "sales": "Ventes",
+          "feedback": "Retour d'information",
+          "order": "Commande",
+          "product": "Produit",
+          "shipping": "Expédition",
+          "technical": "Technique",
+          "other": "Autre"
+        }
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Écrivez votre message ici"
+      },
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "sent": "Message envoyé avec succès",
+      "error": "Erreur lors de l'envoi du message",
+      "submit": "Envoyer"
+    },
+    
+    "info": {
+      "email": {
+        "title": "E-mail",
+        "address": "Adresse e-mail",
+        "responseTime": "disponible 24/7",
+        "label":"E-mail"
+      },
+      "phone": {
+        "title": "Téléphone",
+        "number": "Numéro de téléphone",
+        "hours": "disponible 24/7"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "number": "Numéro WhatsApp",
+        "responseTime": "disponible 24/7",
+        "label": "WhatsApp"
+      },
+      "address": {
+        "line1": "123 Rue des Roses",
+        "line2": "Appartement 4B",
+        "title": "lafayette",
+        "street": "Rue des Roses, 123",
+        "city": "Tunis",
+        "zip": "1000",
+        "hours": "disponible 24/7"
+      },
+      "hours": {
+        "title": "Heures d'ouverture",
+        "monday": "Lundi",
+        "tuesday": "Mardi",
+        "wednesday": "Mercredi",
+        "thursday": "Jeudi",
+        "friday": "Vendredi",
+        "saturday": "Samedi",
+        "sunday": "Dimanche"
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "shipping": "Quels sont vos délais de livraison ?",
+      "returns": "Quelle est votre politique de retour ?",
+      "payment": "Quels modes de paiement acceptez-vous ?"
+    },
+    "quickActions": {
+      "whatsapp": "WhatsApp",
+      "email": "E-mail",
+      "phone": "Téléphone"
+    }
+  },
+  "admin": {
+    "title": "Tableau de bord administrateur",
+    "dashboard": "Tableau de bord",
+    "products": "Gestion des produits",
+    "orders": "Gestion des commandes",
+    "customersNav": "Gestion des clients",
+    "analytics": "Analyses",
+    "settings": "Paramètres",
+    "login": {
+      "title": "Accès administrateur",
+      "password": "Mot de passe",
+      "enter": "Accéder au tableau de bord",
+      "error": "Mot de passe incorrect"
+    },
+    "stats": {
+      "totalSales": "Ventes totales",
+      "totalOrders": "Commandes totales",
+      "totalCustomers": "Clients totaux",
+      "totalProducts": "Produits totaux",
+      "activeCustomers": "Clients actifs",
+      "inactiveCustomers": "Clients inactifs",
+      "vipCustomers": "Clients VIP",
+      "revenue": "Chiffre d'affaires",
+      "averageOrder": "Commande moyenne"
+    },
+    "customers": {
+      "title": "Gestion des clients",
+      "all": "Tous les clients",
+      "active": "Actifs",
+      "inactive": "Inactifs",
+      "vip": "VIP",
+      "searchPlaceholder": "Rechercher des clients...",
+      "viewDetails": "Voir les détails",
+      "customerInfo": "Informations client",
+      "contactInfo": "Informations de contact",
+      "accountInfo": "Informations du compte",
+      "orderHistory": "Historique des commandes",
+      "loyaltyTier": "Niveau de fidélité",
+      "totalSpent": "Total dépensé",
+      "totalOrders": "Total des commandes",
+      "joinDate": "Date d'inscription",
+      "lastOrder": "Dernière commande",
+      "status": "Statut",
+      "recentOrders": "Commandes récentes"
+    }
+  },
+  "footer": {
+    "description": "متجرنا هو وجهتك الموثوقة للتسوق عبر الإنترنت، نقدم مجموعة واسعة من المنتجات عالية الجودة مع خدمة عملاء ممتازة.",
+    "aboutUs": "À propos de nous",
+    "customerService": "Service client",
+
+    "followUs": "Abonnez-vous",
+    "newsletter": "Newsletter",
+    "newsletterText": "Abonnez-vous pour recevoir nos dernières offres",
+    "subscribe": "S'abonner",
+    "copyright": "© 2025 OurStore. Tous droits réservés.",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "shipping": "Livraison",
+    "returns": "Retours",
+    "faq": "FAQ",
+    "support": "Support",
+    "contact": {
+      "title": "Contactez-nous",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "address": "Adresse"
+    },
+    "quickLinks": {
+      "title": "Liens rapides",
+      "about": "À propos de nous",
+      "contact": "Contactez-nous",
+      "products": "Produits",
+      "cart": "Panier",
+      "privacyPolicy": "Politique de confidentialité",
+      "termsOfService": "Conditions d'utilisation",
+      "shipping": "Livraison",
+      "returns": "Retours",
+      "faq": "FAQ"
+    },
+    "rightsReserved": "Tous droits réservés."
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "callToAction": {
+    "title": "Commencez votre aventure avec nous aujourd'hui !",
+    "subtitle": "Découvrez une large gamme de produits de haute qualité qui répondent à tous vos besoins.",
+    "browseProducts": "Parcourir tous les produits",
+    "viewOrders": "Voir les commandes"
+  }
+}

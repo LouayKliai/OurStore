@@ -1,0 +1,353 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "view": "عرض",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "clear": "مسح",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "close": "إغلاق",
+    "open": "فتح",
+    "viewDetails": "عرض التفاصيل",
+    "noProductsFound": "لم يتم العثور على منتجات",
+    "noProductsAvailable": "لا توجد منتجات متاحة في الوقت الحالي. يرجى العودة لاحقًا."
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "categories": "الفئات",
+    "about": "من نحن",
+    "contact": "اتصل بنا",
+    "cart": "السلة",
+    "profile": "الملف الشخصي",
+    "admin": "الإدارة",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "register": "إنشاء حساب",
+    "language": "اللغة"
+  },
+  "header": {
+    "brand": "متجرنا",
+    "tagline": "شريكك الموثوق في التجارة الإلكترونية",
+    "searchPlaceholder": "البحث عن المنتجات...",
+    "cartItems": "{count} عنصر",
+    "adminPanel": "لوحة الإدارة"
+  },
+  "hero": {
+    "title": "اكتشف منتجات استثنائية",
+    "subtitle": "جودة عالية، خدمة ممتازة، توصيل سريع",
+    "cta": "تسوق الآن",
+    "learnMore": "اعرف المزيد",
+    "scroll_indicator": "استكشف المنتجات",
+    "viewAllProducts": "عرض جميع المنتجات",
+    "trust": {
+      "title": "لماذا تختار متجرنا؟",
+      "indicators": {
+        "free_shipping": "شحن مجاني",
+        "quality_products": "منتجات عالية الجودة",
+        "secure_payment": "دفع آمن",
+        "customer_support": "دعم العملاء",
+        "quality_products_description": "منتجات مختارة بعناية",
+        "fast_delivery": "توصيل سريع",
+        "fast_delivery_description": "شحن سريع",
+        "trusted_service": "خدمة موثوقة",
+        "trusted_service_description": "رضا العملاء"
+      }
+    }
+  },
+  "products": {
+    "title": "منتجاتنا",
+    "featured": "المنتجات المميزة",
+    "newArrivals": "وصل حديثاً",
+    "bestsellers": "الأكثر مبيعاً",
+    "onSale": "في التخفيضات",
+    "price": "السعر",
+    "addToCart": "أضف للسلة",
+    "outOfStock": "غير متوفر",
+    "inStock": "متوفر",
+    "quickView": "نظرة سريعة",
+    "compareProducts": "مقارنة المنتجات",
+    "productDetails": "تفاصيل المنتج",
+    "specifications": "المواصفات",
+    "reviews": "آراء العملاء",
+    "relatedProducts": "منتجات مشابهة",
+    "categories": {
+      "title": "الفئات",
+      "subtitle": "استكشف الفئات المختلفة",
+      "clothes": "ملابس",
+      "tech": "تكنولوجيا",
+      "technology": "تكنولوجيا",
+      "beauty_perfumes": "جمال وعطور",
+      "clothes_description": "ملابس أنيقة ومريحة لكل مناسبة",
+      "tech_description": "أحدث الأجهزة وإكسسوارات التكنولوجيا",
+      "beauty_perfumes_description": "منتجات تجميل وعطور مميزة",
+      "shop": "تسوق",
+      "featuredProducts": "منتجات مميزة"
+      
+    },
+    "save": "وفر",
+    "backToProducts": "العودة إلى المنتجات",
+    "clickThumbnails": "انقر على الصور المصغرة أو استخدم الأسهم لعرض زوايا مختلفة",
+    "color": "اللون",
+    "size": "المقاس",
+    "quantity": "الكمية",
+    "total": "المجموع",
+    "orderNow": "اطلب الآن - تواصل مباشر",
+    "subtitle": "تصفح مجموعتنا الكاملة من المنتجات عالية الجودة عبر جميع الفئات",
+    "all": "جميع المنتجات",
+    "found": "تم العثور على {count} منتج"
+  },
+  "bestSellers": {
+    "title": "الأكثر مبيعاً",
+    "subtitle": "منتجاتنا الأكثر شعبية والمفضلة لدى العملاء",
+    "viewAllProducts": "عرض جميع المنتجات"
+  },
+  "cart": {
+    "title": "سلتي",
+    "empty": "سلتك فارغة",
+    "subtotal": "المجموع الفرعي",
+    "total": "المجموع الكلي",
+    "shipping": "الشحن",
+    "tax": "الضريبة",
+    "checkout": "إتمام الطلب",
+    "continueShopping": "متابعة التسوق",
+    "removeItem": "إزالة العنصر",
+    "updateQuantity": "تحديث الكمية",
+    "quantity": "الكمية",
+    "itemsCount": "{count} عنصر في السلة",
+    "noOrders": "لا توجد طلبات بعد",
+    "noOrdersDescription": "سيظهر تاريخ طلباتك هنا. ابدأ التسوق لرؤية طلباتك وتتبع حالتها.",
+    "startShopping": "ابدأ التسوق",
+    "orderSummary": "ملخص الطلب",
+    "itemsOrdered": "العناصر المطلوبة",
+    "color": "اللون",
+    "qty": "الكمية",
+    "unit": "الوحدة",
+    "backToProducts": "العودة إلى المنتجات",
+    "customerInformation": "معلومات العميل",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "address": "عنوان التسليم",
+    "items": "العناصر",
+    "totalItems": "إجمالي العناصر",
+    "totalPrice": "إجمالي السعر",
+    "clearAll": "مسح الكل",
+    "orders": "الطلبات"
+  },
+  "contact": {
+    "title": "اتصل بنا",
+    "subtitle": "نحن هنا لمساعدتك",
+    "form": {
+      "yourOrder": "طلبك",
+      "quantity": "الكمية",
+      "color": "اللون",
+      "size": "المقاس",
+      "autoFillLoaded": "تم تحميل معلومات الاتصال",
+      "autoFillDescription": "لقد قمنا بملء تفاصيلك مسبقًا من طلبك الأخير. يمكنك تعديلها إذا لزم الأمر.",
+      "cancel": "إلغاء",
+      "clear": "مسح",
+      "title": "نموذج الاتصال",
+      "send": "إرسال الرسالة",
+      "sending": "جاري الإرسال...",
+      "confirmOrder": "تأكيد الطلب",
+      "sent": "تم إرسال الرسالة بنجاح",
+      "error": "خطأ في إرسال الرسالة",
+      "name": {
+        "label": "الاسم الكامل",
+        "placeholder": "أدخل اسمك الكامل",
+        "required": "الاسم مطلوب",
+        "invalid": "يرجى إدخال اسم صالح"
+      },
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "أدخل بريدك الإلكتروني",
+        "responseTime": "متوفر 24/7",
+        "required": "البريد الإلكتروني مطلوب",
+        "invalid": "يرجى إدخال بريد إلكتروني صالح"
+      },
+      "phone": {
+        "label": "رقم الهاتف",
+        "placeholder": "أدخل رقم هاتفك",
+        "invalid": "يرجى إدخال رقم هاتف صالح",
+        "requiredForOrder": "مطلوب لتأكيد الطلب"
+      },
+      "address": {
+        "label": "عنوان التسليم",
+        "placeholder": "أدخل عنوان التسليم الكامل"
+      },
+      "subject": {
+        "label": "الموضوع",
+        "placeholder": "اختر موضوعاً",
+        "options": {
+          "general": "عام",
+          "support": "دعم",
+          "sales": "مبيعات",
+          "feedback": "ملاحظات",
+          "order": "طلب",
+          "product": "منتج",
+          "shipping": "شحن",
+          "technical": "تقني",
+          "other": "أخرى"
+        }
+      },
+      "message": {
+        "label": "الرسالة",
+        "placeholder": "اكتب رسالتك هنا"
+      },
+      "submit": "إرسال"
+    },
+    "info": {
+      "email": {
+        "title": "البريد الإلكتروني",
+        "address": "عنوان البريد الإلكتروني",
+        "responseTime": "متوفر 24/7",
+        "label": "البريد الإلكتروني"
+      },
+      "phone": {
+        "title": "الهاتف",
+        "number": "رقم الهاتف",
+        "hours": "متوفر 24/7"
+      },
+      "whatsapp": {
+        "title": "واتساب",
+        "number": "رقم واتساب",
+        "responseTime": "متوفر 24/7",
+        "label": "واتساب"
+      },
+      "address": {
+        "line1": "123 شارع الورود",
+        "line2": "الشقة 4B",
+        "title": "لافاييت",
+        "street": "123 شارع الورود",
+        "city": "تونس",
+        "zip": "1000",
+        "hours": "متوفر 24/7"
+      },
+      "hours": {
+        "title": "ساعات العمل",
+        "monday": "الإثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة",
+        "saturday": "السبت",
+        "sunday": "الأحد"
+      }
+    },
+    "faq": {
+      "title": "الأسئلة الشائعة",
+      "shipping": "ما هي أوقات الشحن؟",
+      "returns": "ما هي سياسة الإرجاع؟",
+      "payment": "ما هي طرق الدفع المقبولة؟"
+    },
+    "quickActions": {
+      "whatsapp": "واتساب",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف"
+    }
+  },
+  "admin": {
+    "title": "لوحة الإدارة",
+    "dashboard": "لوحة التحكم",
+    "products": "إدارة المنتجات",
+    "orders": "إدارة الطلبات",
+    "customersNav": "إدارة العملاء",
+    "analytics": "التحليلات",
+    "settings": "الإعدادات",
+    "login": {
+      "title": "دخول الإدارة",
+      "password": "كلمة المرور",
+      "enter": "دخول لوحة التحكم",
+      "error": "كلمة مرور خاطئة"
+    },
+    "stats": {
+      "totalSales": "إجمالي المبيعات",
+      "totalOrders": "إجمالي الطلبات",
+      "totalCustomers": "إجمالي العملاء",
+      "totalProducts": "إجمالي المنتجات",
+      "activeCustomers": "العملاء النشطون",
+      "inactiveCustomers": "العملاء غير النشطين",
+      "vipCustomers": "العملاء المميزون",
+      "revenue": "الإيرادات",
+      "averageOrder": "متوسط الطلب"
+    },
+    "customers": {
+      "title": "إدارة العملاء",
+      "all": "جميع العملاء",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "vip": "مميز",
+      "searchPlaceholder": "البحث عن العملاء...",
+      "viewDetails": "عرض التفاصيل",
+      "customerInfo": "معلومات العميل",
+      "contactInfo": "معلومات الاتصال",
+      "accountInfo": "معلومات الحساب",
+      "orderHistory": "تاريخ الطلبات",
+      "loyaltyTier": "مستوى الولاء",
+      "totalSpent": "إجمالي المنفق",
+      "totalOrders": "إجمالي الطلبات",
+      "joinDate": "تاريخ الانضمام",
+      "lastOrder": "آخر طلب",
+      "status": "الحالة",
+      "recentOrders": "الطلبات الحديثة"
+    }
+  },
+  "footer": {
+    "description": "متجرنا هو وجهتك الموثوقة للتسوق عبر الإنترنت، نقدم مجموعة واسعة من المنتجات عالية الجودة مع خدمة عملاء ممتازة.",
+    "aboutUs": "من نحن",
+    "customerService": "خدمة العملاء",
+
+    "followUs": "تابعنا",
+    "newsletter": "النشرة الإخبارية",
+    "newsletterText": "اشترك لتلقي أحدث عروضنا",
+    "subscribe": "اشتراك",
+    "copyright": "© 2025 متجرنا. جميع الحقوق محفوظة.",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "shipping": "الشحن",
+    "returns": "الإرجاع",
+    "faq": "الأسئلة الشائعة",
+    "support": "الدعم",
+    "contact": {
+      "title": "اتصل بنا",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "address": "العنوان"
+    },
+    "quickLinks": {
+      "title": "روابط سريعة",
+      "about": "من نحن",
+      "contact": "اتصل بنا",
+      "products": "المنتجات",
+      "cart": "عربة التسوق",
+      "privacyPolicy": "سياسة الخصوصية",
+      "termsOfService": "شروط الخدمة",
+      "shipping": "الشحن",
+      "returns": "الإرجاع",
+      "faq": "الأسئلة الشائعة"
+    },
+    "rightsReserved": "جميع الحقوق محفوظة"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "callToAction": {
+    "title": "ابدأ رحلتك معنا اليوم!",
+    "subtitle": "اكتشف مجموعة واسعة من المنتجات عالية الجودة التي تلبي جميع احتياجاتك.",
+    "browseProducts": "تصفح جميع المنتجات",
+    "viewOrders": "عرض الطلبات"
+  }
+}

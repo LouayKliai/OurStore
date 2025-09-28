@@ -1,0 +1,336 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "viewDetails": "View Details",
+    "noProductsFound": "No products found",
+    "noProductsAvailable": "There are no products available at the moment. Please check back later."
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "about": "About",
+    "contact": "Contact Us",
+    "cart": "Cart",
+    "profile": "Profile",
+    "admin": "Admin",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "language": "Language"
+  },
+  "header": {
+    "brand": "OurStore",
+    "tagline": "Your trusted e-commerce partner",
+    "searchPlaceholder": "Search products...",
+    "cartItems": "{count} items",
+    "adminPanel": "Admin Panel"
+  },
+  "hero": {
+    "title": "Discover exceptional products",
+    "subtitle": "Premium quality, excellent service, fast delivery",
+    "cta": "Shop Now",
+    "learnMore": "Learn More",
+    "scroll_indicator": "Explore Products",
+    "viewAllProducts": "View All Products",
+    "trust": {
+      "title": "Why Choose OurStore?",
+      "indicators": {
+        "free_shipping": "Free Shipping",
+        "quality_products": "High-Quality Products",
+        "secure_payment": "Secure Payment",
+        "customer_support": "Customer Support",
+        "quality_products_description": "Carefully selected products",
+        "fast_delivery": "Fast Delivery",
+        "fast_delivery_description": "Fast shipping",
+        "trusted_service": "Trusted Service",
+        "trusted_service_description": "Customer satisfaction"
+      }
+    }
+  },
+  "products": {
+    "title": "Our Products",
+    "featured": "Featured Products",
+    "newArrivals": "New Arrivals",
+    "bestsellers": "Bestsellers",
+    "onSale": "On Sale",
+    "price": "Price",
+    "addToCart": "Add to Cart",
+    "outOfStock": "Out of Stock",
+    "inStock": "In Stock",
+    "quickView": "Quick View",
+    "compareProducts": "Compare Products",
+    "productDetails": "Product Details",
+    "specifications": "Specifications",
+    "reviews": "Customer Reviews",
+    "relatedProducts": "Related Products",
+    "categories": {
+      "title": "Categories",
+      "subtitle": "Explore different categories",
+      "clothes": "Clothes",
+      "tech": "Tech",
+      "technology": "Technology",
+      "beauty_perfumes": "Beauty & Perfumes",
+      "clothes_description": "Stylish and comfortable clothing for all occasions",
+      "tech_description": "Latest gadgets and tech accessories",
+      "beauty_perfumes_description": "Premium beauty products and fragrances",
+      "shop": "Shop",
+      "featuredProducts": "Featured Products"
+    },
+    "save": "SAVE",
+    "backToProducts": "Back to Products",
+    "clickThumbnails": "Click on the thumbnails or use the arrows to view different angles",
+    "color": "Color",
+    "size": "Size",
+    "quantity": "Quantity",
+    "total": "Total",
+    "orderNow": "Order Now - Live Chat",
+    "subtitle": "Browse our full range of high-quality products across all categories",
+    "all": "All Products",
+    "found": "Found {count} Product"
+  },
+  "bestSellers": {
+    "title": "Bestsellers",
+    "subtitle": "Our most popular products loved by customers",
+    "viewAllProducts": "View All Products"
+  },
+  "cart": {
+    "title": "My Cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "shipping": "Shipping",
+    "tax": "Tax",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping",
+    "removeItem": "Remove Item",
+    "updateQuantity": "Update Quantity",
+    "quantity": "Quantity",
+    "itemsCount": "{count} items in cart",
+    "noOrders": "No orders yet",
+    "noOrdersDescription": "Your order history will appear here. Start shopping to see your orders and track their status.",
+    "startShopping": "Start Shopping",
+    "orderSummary": "Order Summary",
+    "itemsOrdered": "Items Ordered",
+    "color": "Color",
+    "qty": "Quantity",
+    "unit": "Unit",
+    "backToProducts": "Back to Products",
+    "customerInformation": "Customer Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Shipping Address",
+    "items": "Items",
+    "totalItems": "Total Items",
+    "totalPrice": "Total Price",
+    "clearAll": "Clear All",
+    "orders": "Orders"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help",
+    "form": {
+      "yourOrder": "Your Order",
+      "quantity": "Quantity",
+      "color": "Color",
+      "size": "Size",
+      "autoFillLoaded": "Contact information loaded",
+      "autoFillDescription": "We have pre-filled your details from your last order. You can edit them if needed.",
+      "cancel": "Cancel",
+      "clear": "Clear",
+      "title": "Contact Form",
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Choose a subject",
+        "options": {
+          "general": "General",
+          "support": "Support",
+          "sales": "Sales",
+          "feedback": "Feedback",
+          "order": "Order",
+          "product": "Product",
+          "shipping": "Shipping",
+          "technical": "Technical",
+          "other": "Other"
+        }
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Write your message here"
+      },
+      "send": "Send Message",
+      "sending": "Sending...",
+      "sent": "Message sent successfully",
+      "error": "Error sending message",
+      "submit": "Send"
+    },
+    "info": {
+      "email": {
+        "title": "Email",
+        "address": "Email Address",
+        "responseTime": "Available 24/7",
+        "label": "Email"
+      },
+      "phone": {
+        "title": "Phone",
+        "number": "Phone Number",
+        "hours": "Available 24/7"
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "number": "WhatsApp Number",
+        "responseTime": "Available 24/7",
+        "label": "WhatsApp"
+      },
+      "address": {
+        "line1": "123 Main St.",
+        "line2": "Apt 4B",
+        "title": "Lafayette",
+        "street": "123 Rose St.",
+        "city": "Tunis",
+        "zip": "1000",
+        "hours": "Available 24/7"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "shipping": "What are your shipping times?",
+      "returns": "What is your return policy?",
+      "payment": "What payment methods do you accept?"
+    },
+    "quickActions": {
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "dashboard": "Dashboard",
+    "products": "Product Management",
+    "orders": "Order Management",
+    "customersNav": "Customer Management",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "login": {
+      "title": "Admin Access",
+      "password": "Password",
+      "enter": "Access Dashboard",
+      "error": "Invalid password"
+    },
+    "stats": {
+      "totalSales": "Total Sales",
+      "totalOrders": "Total Orders",
+      "totalCustomers": "Total Customers",
+      "totalProducts": "Total Products",
+      "activeCustomers": "Active Customers",
+      "inactiveCustomers": "Inactive Customers",
+      "vipCustomers": "VIP Customers",
+      "revenue": "Revenue",
+      "averageOrder": "Average Order"
+    },
+    "customers": {
+      "title": "Customer Management",
+      "all": "All Customers",
+      "active": "Active",
+      "inactive": "Inactive",
+      "vip": "VIP",
+      "searchPlaceholder": "Search customers...",
+      "viewDetails": "View Details",
+      "customerInfo": "Customer Information",
+      "contactInfo": "Contact Information",
+      "accountInfo": "Account Information",
+      "orderHistory": "Order History",
+      "loyaltyTier": "Loyalty Tier",
+      "totalSpent": "Total Spent",
+      "totalOrders": "Total Orders",
+      "joinDate": "Join Date",
+      "lastOrder": "Last Order",
+      "status": "Status",
+      "recentOrders": "Recent Orders"
+    }
+  },
+  "footer": {
+    "description": "متجرنا هو وجهتك الموثوقة للتسوق عبر الإنترنت، نقدم مجموعة واسعة من المنتجات عالية الجودة مع خدمة عملاء ممتازة.",
+    "aboutUs": "About Us",
+    "customerService": "Customer Service",
+
+    "followUs": "Follow Us",
+    "newsletter": "Newsletter",
+    "newsletterText": "Subscribe to receive our latest offers",
+    "subscribe": "Subscribe",
+    "copyright": "© 2025 OurStore. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "shipping": "Shipping",
+    "returns": "Returns",
+    "faq": "FAQ",
+    "support": "Support",
+    "contact": {
+      "title": "Contact Us",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "products": "Products",
+      "cart": "Shopping Cart",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "shipping": "Shipping",
+      "returns": "Returns",
+      "faq": "FAQ"
+    },
+    "rightsReserved": "All rights reserved"
+  },
+  "language": {
+    "fr": "Français",
+    "en": "English",
+    "ar": "العربية"
+  },
+  "callToAction": {
+    "title": "Start Your Journey with Us Today!",
+    "subtitle": "Discover a wide range of high-quality products that meet all your needs.",
+    "browseProducts": "Browse All Products",
+    "viewOrders": "View Orders"
+  }
+}
