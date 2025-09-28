@@ -1,0 +1,24 @@
+# OurStore Backend Requirements
+flask==2.3.2
+flask-sqlalchemy==3.0.5
+flask-migrate==4.0.4
+flask-cors==4.0.0
+psycopg2-binary==2.9.6
+python-dotenv==1.0.0
+werkzeug==2.3.6
+sqlalchemy==2.0.18
+alembic==1.11.1
+
+# Optional for advanced features
+flask-jwt-extended==4.5.2  # For admin authentication
+redis==4.6.0  # For caching
+celery==5.3.1  # For background tasks
+flask-mail==0.9.1  # For email notifications
+pillow==10.0.0  # For image processing
+boto3==1.28.17  # For AWS S3 storage
+
+# Development dependencies
+pytest==7.4.0
+pytest-flask==1.2.0
+factory-boy==3.3.0
+faker==19.3.0
