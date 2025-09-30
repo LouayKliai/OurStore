@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
 
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Removed - causes critters module issues
   },
 
   // Security headers
