@@ -1,7 +1,7 @@
 services:
   - type: web
     name: ourstore-backend
-    runtime: python3
+    runtime: python
     buildCommand: cd Back && pip install -r requirements.txt
     startCommand: cd Back && python start.py
     envVars:
