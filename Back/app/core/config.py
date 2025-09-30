@@ -64,7 +64,7 @@ class Config:
     REDIS_URL = os.environ.get('REDIS_URL') or 'redis://localhost:6379/0'
     
     # CORS Configuration
-    CORS_ORIGINS = ['http://localhost:3000', 'http://localhost:3001']
+    CORS_ORIGINS = ['http://localhost:3000', 'http://localhost:3001', 'https://ourstore-omega.vercel.app']
 
 class DevelopmentConfig(Config):
     """Development configuration"""

@@ -29,7 +29,7 @@ def create_app(config_name=None):
     db.init_app(app)
     
     # CORS configuration
-    cors_origins = os.getenv('CORS_ORIGINS', 'http://localhost:3000,http://localhost:3001')
+    cors_origins = os.getenv('CORS_ORIGINS', 'http://localhost:3000,http://localhost:3001,https://ourstore-omega.vercel.app')
     origins_list = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
     CORS(app, origins=origins_list)
     
