@@ -1,0 +1,67 @@
+# Render deployment ignore file
+# Files and directories to exclude from deployment
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation (optional - remove if you want docs in production)
+*.md
+!RENDER_DEPLOYMENT.md
+
+# Development files
+.env
+.env.local
+.env.*.local
+
+# Tests (optional - remove if you want tests in production)
+tests/
+test_*.py
+*_test.py
+
+# Database exports (not needed in production)
+database_exports/
+
+# Scripts (keep only production ones)
+scripts/
+!scripts/start.sh
+!scripts/setup_backend.sh
+
+# Node modules (if any)
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/

@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: ourstore-backend
+    runtime: python3
+    buildCommand: pip install -r requirements.txt
+    startCommand: python start.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ourstore-db
+          property: connectionString
+      - key: CORS_ORIGINS
+        value: https://your-frontend-domain.onrender.com
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: CONTACT_PHONE
+        sync: false
+      - key: CONTACT_WHATSAPP
+        sync: false
+      - key: CONTACT_ADDRESS_LINE1
+        sync: false
+      - key: CONTACT_ADDRESS_LINE2
+        sync: false
+      - key: CONTACT_BUSINESS_HOURS
+        sync: false
+      - key: RENDER
+        value: true
