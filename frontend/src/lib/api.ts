@@ -18,7 +18,7 @@ import {
   StockUpdate
 } from './types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://ourstore-3si3.onrender.com';
 
 // Helper function to build query string
 function buildQueryString(params: Record<string, string | number | boolean | undefined>): string {

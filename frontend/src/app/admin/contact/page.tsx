@@ -25,7 +25,7 @@ export default function AdminContactPage() {
   const fetchMessages = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5000/api/contact/messages?status=${filter}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact/messages?status=${filter}`);
       const data = await response.json();
 
       if (data.messages) {
@@ -43,7 +43,7 @@ export default function AdminContactPage() {
 
   const markAsRead = async (messageId: number) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/contact/messages/${messageId}/read`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact/messages/${messageId}/read`, {
         method: 'PUT',
       });
 
@@ -62,7 +62,7 @@ export default function AdminContactPage() {
     if (!confirm('Are you sure you want to delete this message?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/contact/messages/${messageId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact/messages/${messageId}`, {
         method: 'DELETE',
       });
 

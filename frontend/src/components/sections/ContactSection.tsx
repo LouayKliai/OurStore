@@ -64,7 +64,7 @@ export function ContactSection() {
       }
 
       // Submit to backend
-      const response = await fetch('http://localhost:5000/api/contact/submit', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contact/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
