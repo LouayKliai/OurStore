@@ -13,6 +13,7 @@ from .review import ProductReview
 from .inventory import InventoryLog
 from .newsletter import NewsletterSubscription
 from .settings import SiteSetting
+from .contact import ContactMessage
 
 __all__ = [
     'Category',
@@ -25,5 +26,6 @@ __all__ = [
     'ProductReview',
     'InventoryLog',
     'NewsletterSubscription',
-    'SiteSetting'
+    'SiteSetting',
+    'ContactMessage'
 ]

@@ -29,7 +29,9 @@ def create_app(config_name=None):
     db.init_app(app)
     
     # CORS configuration
-    CORS(app, origins=['http://localhost:3000', 'http://localhost:3001'])
+    cors_origins = os.getenv('CORS_ORIGINS', 'http://localhost:3000,http://localhost:3001')
+    origins_list = [origin.strip() for origin in cors_origins.split(',') if origin.strip()]
+    CORS(app, origins=origins_list)
     
     # Flask-Migrate
     migrate = Migrate(app, db)

@@ -1,8 +1,104 @@
 'use client';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useState } from 'react';
 
 export function ContactSection() {
   const { t } = useTranslation();
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  // Contact information from environment variables
+  const contactInfo = {
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'support@ourstore.com',
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1 (555) 123-4567',
+    whatsapp: process.env.NEXT_PUBLIC_CONTACT_WHATSAPP || '+1 (555) 123-4567',
+    address: {
+      line1: process.env.NEXT_PUBLIC_CONTACT_ADDRESS_LINE1 || '123 Commerce Street',
+      line2: process.env.NEXT_PUBLIC_CONTACT_ADDRESS_LINE2 || 'Business District, NY 10001',
+      hours: process.env.NEXT_PUBLIC_CONTACT_BUSINESS_HOURS || 'Monday - Friday: 9AM - 6PM EST'
+    }
+  };
+
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // Validate form
+      if (!formData.name.trim()) {
+        throw new Error('Please enter your name');
+      }
+      if (!formData.email.trim()) {
+        throw new Error('Please enter your email');
+      }
+      if (!formData.email.includes('@')) {
+        throw new Error('Please enter a valid email address');
+      }
+      if (!formData.subject) {
+        throw new Error('Please select a subject');
+      }
+      if (!formData.message.trim()) {
+        throw new Error('Please enter your message');
+      }
+
+      // Submit to backend
+      const response = await fetch('http://localhost:5000/api/contact/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Thank you for your message! We\'ll get back to you soon.'
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error(data.error || 'Failed to send message');
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'An error occurred. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-16 lg:py-24 bg-gradient-to-br from-primary-50 via-white to-accent-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,7 +130,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-primary-900 mb-1">{t('contact.info.email.title')}</h4>
-                    <p className="text-primary-600">{t('contact.info.email.address')}</p>
+                    <p className="text-primary-600">{contactInfo.email}</p>
                     <p className="text-sm text-primary-500">{t('contact.info.email.responseTime')}</p>
                   </div>
                 </div>
@@ -48,7 +144,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-primary-900 mb-1">{t('contact.info.phone.title')}</h4>
-                    <p className="text-primary-600">{t('contact.info.phone.number')}</p>
+                    <p className="text-primary-600">{contactInfo.phone}</p>
                     <p className="text-sm text-primary-500">{t('contact.info.phone.hours')}</p>
                   </div>
                 </div>
@@ -62,7 +158,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-primary-900 mb-1">{t('contact.info.whatsapp.title')}</h4>
-                    <p className="text-primary-600">{t('contact.info.whatsapp.number')}</p>
+                    <p className="text-primary-600">{contactInfo.whatsapp}</p>
                     <p className="text-sm text-primary-500">{t('contact.info.whatsapp.responseTime')}</p>
                   </div>
                 </div>
@@ -77,9 +173,9 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-primary-900 mb-1">{t('contact.info.address.title')}</h4>
-                    <p className="text-primary-600">{t('contact.info.address.line1')}</p>
-                    <p className="text-primary-600">{t('contact.info.address.line2')}</p>
-                    <p className="text-sm text-primary-500">{t('contact.info.address.hours')}</p>
+                    <p className="text-primary-600">{contactInfo.address.line1}</p>
+                    <p className="text-primary-600">{contactInfo.address.line2}</p>
+                    <p className="text-sm text-primary-500">{contactInfo.address.hours}</p>
                   </div>
                 </div>
               </div>
@@ -88,7 +184,7 @@ export function ContactSection() {
             {/* Quick Actions */}
             <div className="grid grid-cols-2 gap-4">
               <button 
-                onClick={() => window.location.href = 'mailto:support@ourstore.com'}
+                onClick={() => window.location.href = `mailto:${contactInfo.email}`}
                 className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,7 +194,7 @@ export function ContactSection() {
               </button>
               
               <button 
-                onClick={() => window.open('https://wa.me/15551234567?text=Hi! I have a question about your products', '_blank')}
+                onClick={() => window.open(`https://wa.me/${contactInfo.whatsapp}?text=Hi! I have a question about your products`, '_blank')}
                 className="flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -115,7 +211,7 @@ export function ContactSection() {
               {t('contact.form.title')}
             </h3>
             
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-primary-700 mb-2">
@@ -124,6 +220,9 @@ export function ContactSection() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors duration-200"
                   placeholder={t('contact.form.name.placeholder')}
                 />
@@ -137,6 +236,9 @@ export function ContactSection() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors duration-200"
                   placeholder={t('contact.form.email.placeholder')}
                 />
@@ -149,6 +251,9 @@ export function ContactSection() {
                 </label>
                 <select
                   id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors duration-200"
                 >
                   <option value="">{t('contact.form.subject.placeholder')}</option>
@@ -167,21 +272,47 @@ export function ContactSection() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-primary-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors duration-200 resize-none"
                   placeholder={t('contact.form.message.placeholder')}
                 ></textarea>
               </div>
 
+              {/* Status Message */}
+              {submitStatus.type && (
+                <div className={`p-4 rounded-lg ${
+                  submitStatus.type === 'success'
+                    ? 'bg-green-50 border border-green-200 text-green-800'
+                    : 'bg-red-50 border border-red-200 text-red-800'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
+
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-6 py-4 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full px-6 py-4 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl disabled:shadow-none transition-all duration-300 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-                {t('contact.form.submit')}
+                {isSubmitting ? (
+                  <>
+                    <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    {t('contact.form.submitting')}
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                    {t('contact.form.submit')}
+                  </>
+                )}
               </button>
             </form>
           </div>
