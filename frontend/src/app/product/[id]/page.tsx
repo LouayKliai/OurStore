@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Product } from '@/lib/types';
-import { getStaticProductById } from '@/lib/staticData';
+import { getProductById } from '@/lib/api';
 import { formatPrice } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
@@ -23,13 +24,24 @@ export default function ProductDetailPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Mock product images - in a real app, these would come from the product data
-  const productImages = [
-    { id: 1, alt: 'Main product view', color: '#f3f4f6' },
-    { id: 2, alt: 'Side view', color: '#e5e7eb' },
-    { id: 3, alt: 'Back view', color: '#d1d5db' },
-    { id: 4, alt: 'Detail view', color: '#9ca3af' },
-  ];
+  // Use product images from backend if available
+  const productImages: { id: number; alt: string; color: string; src?: string }[] = React.useMemo(() => {
+    if (product?.images && product.images.length > 0) {
+      return product.images.map((imageUrl, index) => ({
+        id: index + 1,
+        alt: `${product.name} - View ${index + 1}`,
+        color: '#f3f4f6',
+        src: imageUrl
+      }));
+    }
+    // Fallback to placeholder if no images
+    return [
+      { id: 1, alt: 'Main product view', color: '#f3f4f6' },
+      { id: 2, alt: 'Side view', color: '#e5e7eb' },
+      { id: 3, alt: 'Back view', color: '#d1d5db' },
+      { id: 4, alt: 'Detail view', color: '#9ca3af' },
+    ];
+  }, [product]);
 
   // Color mapping for real color swatches
   const getColorHex = (colorName: string): string => {
@@ -68,7 +80,8 @@ export default function ProductDetailPage() {
 
       try {
         setLoading(true);
-        const productData = await getStaticProductById(productId);
+        const data = await getProductById(productId);
+        const productData = data.product;
         if (productData) {
           setProduct(productData);
           setSelectedColor(productData.color_options?.[0] || '');
@@ -201,10 +214,19 @@ export default function ProductDetailPage() {
             {/* Main Image with Navigation */}
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-primary-200 to-accent-200 rounded-xl sm:rounded-2xl shadow-xl flex items-center justify-center relative overflow-hidden group">
-                <div 
-                  className="absolute inset-0 transition-all duration-500 ease-out"
-                  style={{ backgroundColor: productImages[selectedImageIndex].color }}
-                />
+                {productImages[selectedImageIndex].src ? (
+                  <Image
+                    src={`${productImages[selectedImageIndex].src}?v=${Date.now()}`}
+                    alt={productImages[selectedImageIndex].alt}
+                    fill
+                    className="object-cover rounded-xl sm:rounded-2xl"
+                  />
+                ) : (
+                  <div 
+                    className="absolute inset-0 transition-all duration-500 ease-out"
+                    style={{ backgroundColor: productImages[selectedImageIndex].color }}
+                  />
+                )}
                 
                 {/* Image Counter */}
                 <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">
@@ -232,20 +254,22 @@ export default function ProductDetailPage() {
                   </svg>
                 </button>
 
-                {/* Main Image Content */}
-                <div className="relative z-10 text-center">
-                  <svg className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-primary-500 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p className="text-sm text-primary-600 font-medium">{productImages[selectedImageIndex].alt}</p>
-                </div>
+                {/* Main Image Content - Only show when no real image */}
+                {!productImages[selectedImageIndex].src && (
+                  <div className="relative z-10 text-center">
+                    <svg className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-primary-500 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <p className="text-sm text-primary-600 font-medium">{productImages[selectedImageIndex].alt}</p>
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Enhanced Image Thumbnails */}
             <div className="relative">
               <div className="flex space-x-3 overflow-x-auto pb-2 scrollbar-hide">
-                {productImages.map((image, index) => (
+                {productImages.map((image: { id: number; alt: string; color: string; src?: string }, index: number) => (
                   <button
                     key={image.id}
                     onClick={() => setSelectedImageIndex(index)}
@@ -260,6 +284,19 @@ export default function ProductDetailPage() {
                       className="w-full h-full flex items-center justify-center transition-all duration-300 relative"
                       style={{ backgroundColor: image.color }}
                     >
+                      {image.src ? (
+                        <Image
+                          src={`${image.src}?v=${Date.now()}`}
+                          alt={image.alt}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <svg className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500 group-hover/thumb:text-accent-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      )}
+                      
                       {selectedImageIndex === index && (
                         <div className="absolute inset-0 bg-accent-500/20 flex items-center justify-center">
                           <div className="w-6 h-6 bg-accent-500 rounded-full flex items-center justify-center">
@@ -269,9 +306,6 @@ export default function ProductDetailPage() {
                           </div>
                         </div>
                       )}
-                      <svg className="w-6 h-6 sm:w-8 sm:h-8 text-primary-500 group-hover/thumb:text-accent-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
                     </div>
                   </button>
                 ))}
@@ -322,7 +356,7 @@ export default function ProductDetailPage() {
                 {product.color_options && product.color_options.length > 0 && (
                   <div>
                     <h3 className="text-base sm:text-lg font-bold text-primary-800 mb-3 sm:mb-4">
-                      {t('products.color')}: <span className="font-normal text-primary-600">{selectedColor}</span>
+                      {t('products.color')}: <span className="font-normal text-primary-600">{t(`product.colors.${selectedColor}`)}</span>
                     </h3>
                     <div className="flex flex-wrap gap-3">
                       {product.color_options.map((color) => (

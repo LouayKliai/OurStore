@@ -66,7 +66,21 @@ sudo -u postgres psql -c "CREATE DATABASE $DB_NAME;" || {
 
 log "Step 4: Setting up database permissions..."
 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;" || {
-    warning "Could not grant privileges (this might be okay if user has superuser rights)"
+    warning "Could not grant database privileges (this might be okay if user has superuser rights)"
+}
+
+# Grant schema permissions
+sudo -u postgres psql -d $DB_NAME -c "GRANT ALL ON SCHEMA public TO $DB_USER;" || {
+    warning "Could not grant schema privileges"
+}
+sudo -u postgres psql -d $DB_NAME -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO $DB_USER;" || {
+    warning "Could not grant table privileges"
+}
+sudo -u postgres psql -d $DB_NAME -c "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO $DB_USER;" || {
+    warning "Could not grant sequence privileges"
+}
+sudo -u postgres psql -d $DB_NAME -c "ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO $DB_USER;" || {
+    warning "Could not set default privileges"
 }
 
 log "Step 5: Activating Python environment..."

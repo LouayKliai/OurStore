@@ -69,7 +69,7 @@ def create_order():
             status='pending',
             shipping_address=data['shipping_address'],
             billing_address=data.get('billing_address', data['shipping_address']),
-            tracking_number=str(uuid.uuid4())[:8].upper()
+            payment_status='pending'
         )
         
         # Add order items
@@ -79,21 +79,25 @@ def create_order():
             if not product:
                 return jsonify({'error': f'Product {item_data["product_id"]} not found'}), 404
             
-            if product.stock_quantity < item_data['quantity']:
+            if product.stock < item_data['quantity']:
                 return jsonify({'error': f'Insufficient stock for {product.name}'}), 400
             
             order_item = OrderItem(
                 product_id=item_data['product_id'],
                 quantity=item_data['quantity'],
-                unit_price=product.price
+                price=product.price,
+                color=item_data.get('color'),
+                size=item_data.get('size')
             )
-            order.items.append(order_item)
+            order.order_items.append(order_item)
             total_amount += product.price * item_data['quantity']
             
             # Update stock
             product.update_stock(-item_data['quantity'], 'sale')
         
-        order.total_amount = total_amount
+        # Set order totals
+        order.subtotal = total_amount
+        order.total_amount = total_amount  # Add shipping/tax logic later if needed
         order.save()
         
         return jsonify(order.to_dict()), 201

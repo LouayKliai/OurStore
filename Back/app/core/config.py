@@ -32,6 +32,16 @@ class Config:
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
     
+    # Cloudinary Configuration (Free tier: 25GB storage, 25GB monthly bandwidth)
+    CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME')
+    CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')
+    CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')
+    
+    # Image Storage Settings
+    USE_CLOUDINARY = os.environ.get('USE_CLOUDINARY', 'true').lower() in ['true', 'on', '1']
+    IMAGE_QUALITY = 90  # Image compression quality (1-100)
+    MAX_IMAGE_SIZE = (1920, 1080)  # Max dimensions for uploaded images
+    
     # Email Configuration (for notifications)
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 587)
@@ -45,7 +55,7 @@ class Config:
     CUSTOMERS_PER_PAGE = 20
     
     # Business Settings
-    DEFAULT_CURRENCY = 'USD'
+    DEFAULT_CURRENCY = 'TND'
     DEFAULT_TAX_RATE = 0.08  # 8%
     DEFAULT_SHIPPING_COST = 9.99
     FREE_SHIPPING_THRESHOLD = 50.00

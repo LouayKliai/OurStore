@@ -7,8 +7,10 @@ Populates the database with realistic sample data for development and testing
 import os
 import sys
 import random
+import io
 from datetime import datetime
 from werkzeug.security import generate_password_hash
+from PIL import Image, ImageDraw, ImageFont
 
 # Add the current directory to Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -23,10 +25,65 @@ from app.models.admin import AdminUser
 from app.models.coupon import Coupon
 from app.models.review import ProductReview
 from app.models.inventory import InventoryLog
+from app.utils.image_upload import upload_image
 from seed_data import (
     CATEGORIES, PRODUCTS, CUSTOMERS, ADMIN_USERS, 
     COUPONS, SAMPLE_ORDERS, SAMPLE_REVIEWS
 )
+
+def create_sample_image(width=800, height=600, color=(100, 150, 200), text="Sample Product"):
+    """Create a simple sample image with gradient background (no text)"""
+    # Create image with gradient background
+    img = Image.new('RGB', (width, height), color)
+    
+    # Create a simple gradient effect
+    for y in range(height):
+        for x in range(width):
+            # Create a subtle gradient
+            r = min(255, color[0] + (x * 10) // width)
+            g = min(255, color[1] + (y * 10) // height)
+            b = min(255, color[2] + ((x + y) * 5) // (width + height))
+            img.putpixel((x, y), (r, g, b))
+    
+    # Convert to BytesIO for upload
+    img_buffer = io.BytesIO()
+    img.save(img_buffer, format='JPEG', quality=90)
+    img_buffer.seek(0)
+    
+    return img_buffer
+
+def upload_sample_images(product_name, num_images=2):
+    """Upload sample images for a product and return URLs"""
+    # Different color schemes for different products
+    color_schemes = [
+        (100, 150, 200),    # Blue
+        (150, 100, 200),    # Purple
+        (200, 150, 100),    # Orange
+        (100, 200, 150),    # Green
+        (200, 100, 150),    # Pink
+        (150, 200, 100),    # Lime
+        (100, 150, 250),    # Light Blue
+        (250, 150, 100),    # Coral
+        (150, 250, 100),    # Light Green
+        (250, 100, 150),    # Hot Pink
+    ]
+    
+    uploaded_urls = []
+    
+    for i in range(num_images):
+        # Use different colors for variety
+        color = color_schemes[(hash(product_name) + i) % len(color_schemes)]
+        img_buffer = create_sample_image(color=color)
+        
+        # Upload to Cloudinary
+        url = upload_image(img_buffer, folder='ourstore/products')
+        if url:
+            uploaded_urls.append(url)
+            print(f"📸 Uploaded image for {product_name}: {url}")
+        else:
+            print(f"❌ Failed to upload image for {product_name}")
+    
+    return uploaded_urls
 
 def clear_database():
     """Clear all data from database tables"""
@@ -55,6 +112,8 @@ def seed_categories():
         category = Category(
             name=cat_data['name'],
             description=cat_data['description'],
+            name_code=cat_data['name_code'],
+            description_code=cat_data['description_code'],
             created_at=datetime.now()
         )
         db.session.add(category)
@@ -72,14 +131,24 @@ def seed_products(categories):
     for prod_data in PRODUCTS:
         category = categories[prod_data['category']]
         
+        # Upload sample images for the product
+        num_images = len(prod_data.get('images', []))
+        if num_images == 0:
+            num_images = 1  # At least one image per product
+        
+        uploaded_image_urls = upload_sample_images(prod_data['name'], num_images)
+        
         product = Product(
             name=prod_data['name'],
             description=prod_data['description'],
             price=prod_data['price'],
+            original_price=prod_data.get('original_price'),
             category_id=category.id,
             sku=prod_data['sku'],
             stock=prod_data['stock_quantity'],
-            images=prod_data['images'],
+            color_options=prod_data.get('color_options', []),
+            size_options=prod_data.get('size_options', []),
+            images=uploaded_image_urls,  # Use uploaded URLs instead of placeholder filenames
             is_bestseller=prod_data.get('is_bestseller', False),
             is_active=True,
             created_at=datetime.now()
@@ -88,7 +157,7 @@ def seed_products(categories):
         product_objects[prod_data['name']] = product
     
     db.session.commit()
-    print(f"✅ Added {len(PRODUCTS)} products")
+    print(f"✅ Added {len(PRODUCTS)} products with uploaded images")
     return product_objects
 
 def seed_customers():

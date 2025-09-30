@@ -9,13 +9,16 @@ werkzeug==2.3.6
 sqlalchemy==2.0.18
 alembic==1.11.1
 
+# Image storage and processing
+cloudinary==1.36.0  # Free cloud image storage
+pillow==10.0.0  # Image processing
+
 # Optional for advanced features
 flask-jwt-extended==4.5.2  # For admin authentication
 redis==4.6.0  # For caching
 celery==5.3.1  # For background tasks
 flask-mail==0.9.1  # For email notifications
-pillow==10.0.0  # For image processing
-boto3==1.28.17  # For AWS S3 storage
+boto3==1.28.17  # For AWS S3 storage (alternative)
 
 # Development dependencies
 pytest==7.4.0

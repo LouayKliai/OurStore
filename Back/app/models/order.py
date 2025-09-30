@@ -19,7 +19,7 @@ class Order(BaseModel):
     tax_amount = db.Column(db.Numeric(10, 2), default=0)
     shipping_cost = db.Column(db.Numeric(10, 2), default=0)
     total_amount = db.Column(db.Numeric(10, 2), nullable=False)
-    currency = db.Column(db.String(3), default='USD')
+    currency = db.Column(db.String(3), default='TND')
     payment_status = db.Column(db.String(20), default='pending')
     payment_method = db.Column(db.String(50))
     shipping_address = db.Column(db.JSON)

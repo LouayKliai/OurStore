@@ -54,19 +54,20 @@ def create_customer():
         data = request.get_json()
         
         # Validate required fields
-        required_fields = ['name', 'email']
+        required_fields = ['name']  # Email is now optional for contact form orders
         for field in required_fields:
             if field not in data or not data[field]:
                 return jsonify({'error': f'{field} is required'}), 400
         
-        # Check if email already exists
-        existing_customer = Customer.query.filter_by(email=data['email']).first()
-        if existing_customer:
-            return jsonify({'error': 'Email already exists'}), 400
+        # Check if email already exists (only if email is provided)
+        if 'email' in data and data['email']:
+            existing_customer = Customer.query.filter_by(email=data['email']).first()
+            if existing_customer:
+                return jsonify({'error': 'Email already exists'}), 400
         
         customer = Customer(
             name=data['name'],
-            email=data['email'],
+            email=data.get('email'),  # Made email optional
             phone=data.get('phone'),
             address=data.get('address'),
             city=data.get('city'),

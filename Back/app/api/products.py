@@ -165,21 +165,44 @@ def get_categories():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@products_bp.route('/categories/featured', methods=['GET'])
+def get_categories_with_featured_products():
+    """Get all categories with featured products for each category"""
+    try:
+        limit = request.args.get('limit', 3, type=int)  # Number of featured products per category
+        
+        categories = Category.query.all()
+        category_previews = {}
+        
+        for category in categories:
+            # Get featured products for this category (recently added, active products)
+            featured_products = Product.query.filter_by(
+                category_id=category.id,
+                is_active=True
+            ).order_by(Product.created_at.desc()).limit(limit).all()
+            
+            category_previews[str(category.id)] = [product.to_dict() for product in featured_products]
+        
+        return jsonify({
+            'categories': [category.to_dict() for category in categories],
+            'categoryPreviews': category_previews
+        })
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @products_bp.route('/bestsellers', methods=['GET'])
 def get_bestsellers():
     """Get bestseller products"""
     try:
-        limit = request.args.get('limit', 10, type=int)
-        
+        # Always return top 3 bestsellers, sorted by created_at desc (or sales if available)
         bestsellers = Product.query.filter_by(
-            is_active=True, 
+            is_active=True,
             is_bestseller=True
-        ).limit(limit).all()
-        
+        ).order_by(Product.created_at.desc()).limit(3).all()
         return jsonify({
             'bestsellers': [product.to_dict() for product in bestsellers]
         })
-        
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -202,3 +225,4 @@ def update_stock(product_id):
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    

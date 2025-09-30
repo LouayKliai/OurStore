@@ -12,31 +12,43 @@ CATEGORIES = [
     {
         'name': 'Electronics',
         'description': 'Latest electronic devices and gadgets',
+        'name_code': 'electronics',
+        'description_code': 'electronics_description',
         'is_active': True
     },
     {
         'name': 'Clothing',
         'description': 'Fashion and apparel for all ages',
+        'name_code': 'clothing',
+        'description_code': 'clothing_description',
         'is_active': True
     },
     {
         'name': 'Home & Garden',
         'description': 'Everything for your home and garden',
+        'name_code': 'home_garden',
+        'description_code': 'home_garden_description',
         'is_active': True
     },
     {
         'name': 'Books',
         'description': 'Books, e-books, and audiobooks',
+        'name_code': 'books',
+        'description_code': 'books_description',
         'is_active': True
     },
     {
         'name': 'Sports & Outdoors',
         'description': 'Sports equipment and outdoor gear',
+        'name_code': 'sports_outdoors',
+        'description_code': 'sports_outdoors_description',
         'is_active': True
     },
     {
         'name': 'Beauty & Health',
         'description': 'Beauty products and health supplements',
+        'name_code': 'beauty_health',
+        'description_code': 'beauty_health_description',
         'is_active': True
     }
 ]
@@ -48,9 +60,11 @@ PRODUCTS = [
         'name': 'Wireless Bluetooth Headphones',
         'description': 'Premium quality wireless headphones with noise cancellation and 30-hour battery life.',
         'price': Decimal('89.99'),
+        'original_price': Decimal('119.99'),  # Promotion price
         'category': 'Electronics',
         'sku': 'WBH001',
         'stock_quantity': 50,
+        'color_options': ['Black', 'White', 'Blue'],
         'images': ['headphones1.jpg', 'headphones2.jpg'],
         'specifications': {'Battery Life': '30 hours', 'Connectivity': 'Bluetooth 5.0', 'Weight': '250g'},
         'is_bestseller': True,
@@ -63,6 +77,7 @@ PRODUCTS = [
         'category': 'Electronics',
         'sku': 'SWX001',
         'stock_quantity': 25,
+        'color_options': ['Black', 'Silver', 'Gold'],
         'images': ['smartwatch1.jpg', 'smartwatch2.jpg'],
         'specifications': {'Display': '1.4 inch OLED', 'Battery': '7 days', 'Water Resistance': 'IP68'},
         'is_bestseller': True,
@@ -75,6 +90,7 @@ PRODUCTS = [
         'category': 'Electronics',
         'sku': 'USBC001',
         'stock_quantity': 100,
+        'color_options': ['Black', 'White'],
         'images': ['cable1.jpg'],
         'specifications': {'Length': '6 feet', 'Power': '100W', 'Material': 'Braided nylon'},
         'is_bestseller': False,
@@ -86,9 +102,12 @@ PRODUCTS = [
         'name': 'Classic Cotton T-Shirt',
         'description': 'Comfortable 100% cotton t-shirt available in multiple colors and sizes.',
         'price': Decimal('24.99'),
+        'original_price': Decimal('34.99'),  # Promotion price
         'category': 'Clothing',
         'sku': 'CCT001',
         'stock_quantity': 150,
+        'color_options': ['White', 'Black', 'Blue', 'Red', 'Green'],
+        'size_options': ['S', 'M', 'L', 'XL', 'XXL'],
         'images': ['tshirt1.jpg', 'tshirt2.jpg', 'tshirt3.jpg'],
         'specifications': {'Material': '100% Cotton', 'Fit': 'Regular', 'Care': 'Machine washable'},
         'is_bestseller': True,
@@ -101,6 +120,8 @@ PRODUCTS = [
         'category': 'Clothing',
         'sku': 'DJ001',
         'stock_quantity': 75,
+        'color_options': ['Dark Blue', 'Light Blue', 'Black'],
+        'size_options': ['28', '30', '32', '34', '36', '38'],
         'images': ['jeans1.jpg', 'jeans2.jpg'],
         'specifications': {'Material': '98% Cotton, 2% Elastane', 'Fit': 'Slim', 'Wash': 'Dark blue'},
         'is_bestseller': False,

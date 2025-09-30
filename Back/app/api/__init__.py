@@ -10,9 +10,11 @@ def register_blueprints(app):
     from app.api.orders import orders_bp
     from app.api.admin import admin_bp
     from app.api.customers import customers_bp
+    from app.api.images import images_bp
     
     # Register blueprints
     app.register_blueprint(products_bp)
     app.register_blueprint(orders_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(customers_bp)
+    app.register_blueprint(images_bp)

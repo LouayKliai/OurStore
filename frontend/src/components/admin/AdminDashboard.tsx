@@ -1,54 +1,98 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { DashboardStats } from '@/lib/types';
+import { getAdminDashboard, getAnalytics } from '@/lib/api';
 
 export function AdminDashboard() {
+  const [dashboardData, setDashboardData] = useState<DashboardStats | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadDashboardData = async () => {
+      try {
+        setLoading(true);
+        const data = await getAdminDashboard();
+        setDashboardData(data);
+      } catch (error) {
+        console.error('Error loading dashboard data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadDashboardData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="p-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-48 mb-6"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-32 bg-gray-200 rounded-lg"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!dashboardData) {
+    return (
+      <div className="p-6">
+        <div className="text-center text-gray-500">
+          Failed to load dashboard data
+        </div>
+      </div>
+    );
+  }
+
   const stats = [
     {
       title: 'Total Revenue',
-      value: '$12,450',
-      change: '+12.5%',
-      changeType: 'positive',
+      value: `$${dashboardData.stats.total_revenue.toLocaleString()}`,
+      change: `+${((dashboardData.stats.revenue_this_month / dashboardData.stats.total_revenue) * 100).toFixed(1)}%`,
+      changeType: 'positive' as const,
       icon: 'dollar'
     },
     {
-      title: 'Orders Today',
-      value: '23',
+      title: 'Orders This Month',
+      value: dashboardData.stats.orders_this_month.toString(),
       change: '+8.2%',
-      changeType: 'positive',
+      changeType: 'positive' as const,
       icon: 'order'
     },
     {
       title: 'Total Products',
-      value: '42',
+      value: dashboardData.stats.total_products.toString(),
       change: '+3',
-      changeType: 'positive',
+      changeType: 'positive' as const,
       icon: 'product'
     },
     {
-      title: 'Active Users',
-      value: '1,234',
+      title: 'Total Customers',
+      value: dashboardData.stats.total_customers.toString(),
       change: '+5.1%',
-      changeType: 'positive',
+      changeType: 'positive' as const,
       icon: 'users'
     }
   ];
 
-  const recentOrders = [
-    { id: '#001', customer: 'John Doe', product: 'Premium T-Shirt', amount: '$29.99', status: 'completed' },
-    { id: '#002', customer: 'Jane Smith', product: 'Wireless Headphones', amount: '$159.99', status: 'processing' },
-    { id: '#003', customer: 'Mike Johnson', product: 'Face Cream', amount: '$49.99', status: 'pending' },
-    { id: '#004', customer: 'Sarah Wilson', product: 'Smart Watch', amount: '$299.99', status: 'completed' },
-    { id: '#005', customer: 'Tom Brown', product: 'Running Shoes', amount: '$89.99', status: 'processing' },
-  ];
+  const recentOrders = dashboardData.recent_orders.map(order => ({
+    id: `#${order.id}`,
+    customer: order.customer?.name || 'Unknown',
+    product: order.items?.[0]?.product?.name || 'Product',
+    amount: `$${parseFloat(order.total_amount).toFixed(2)}`,
+    status: order.status
+  }));
 
-  const topProducts = [
-    { name: 'Premium T-Shirt', sales: 45, revenue: '$1,349.55' },
-    { name: 'Wireless Headphones', sales: 32, revenue: '$5,119.68' },
-    { name: 'Face Cream', sales: 28, revenue: '$1,399.72' },
-    { name: 'Smart Watch', sales: 24, revenue: '$7,199.76' },
-    { name: 'Running Shoes', sales: 19, revenue: '$1,709.81' },
-  ];
+  const topProducts = dashboardData.top_products.map(item => ({
+    name: item.product.name,
+    sales: item.total_sold,
+    revenue: `$${(item.total_sold * parseFloat(item.product.price)).toFixed(2)}`
+  }));
 
   const renderIcon = (iconType: string) => {
     const iconClass = "w-6 h-6 text-white";

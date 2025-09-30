@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { validatePhone, generateOrderId, formatPrice } from '@/lib/utils';
 import { orderStorage } from '@/lib/localStorage';
 import { customerStorage } from '@/lib/customerStorage';
+import { createCustomer, createOrder } from '@/lib/api';
 import { useTranslation } from '@/hooks/useTranslation';
 
 interface ContactFormProps {
@@ -92,10 +93,33 @@ export function ContactForm({ product, selectedColor, selectedSize, quantity, on
     setSubmitting(true);
     
     try {
-      // Generate a unique order ID for local storage
+      // Step 1: Create customer in database
+      const customerData = {
+        name: customerInfo.name,
+        phone: customerInfo.phone,
+        address: customerInfo.address,
+      };
+      
+      const createdCustomer = await createCustomer(customerData);
+      
+      // Step 2: Create order in database
+      const orderData = {
+        customer_id: createdCustomer.id,
+        items: [{
+          product_id: product.id,
+          quantity: quantity,
+          color: selectedColor || null,
+          size: selectedSize || null,
+        }],
+        shipping_address: customerInfo.address,
+        billing_address: customerInfo.address,
+      };
+      
+      const createdOrder = await createOrder(orderData);
+      
+      // Step 3: Also save to localStorage for UI consistency
       const localOrderId = generateOrderId();
       
-      // Create local order record
       const localOrder: LocalOrder = {
         id: localOrderId,
         items: [{
@@ -112,17 +136,14 @@ export function ContactForm({ product, selectedColor, selectedSize, quantity, on
         status: 'pending'
       };
 
-      // Save to localStorage
+      // Save to localStorage for UI consistency
       orderStorage.addOrder(localOrder);
 
       // Save customer info for future use
       customerStorage.saveCustomerInfo(customerInfo);
 
-      // Simulate processing delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Call success callback
-      onSuccess(localOrderId);
+      // Call success callback with the database order ID
+      onSuccess(createdOrder.id.toString());
       
     } catch (error) {
       console.error('Failed to submit order:', error);

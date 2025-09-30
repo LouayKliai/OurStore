@@ -9,7 +9,7 @@ export function Settings() {
     storeEmail: 'admin@ourstore.com',
     storePhone: '+1 (555) 123-4567',
     storeAddress: '123 Commerce Street, New York, NY 10001',
-    currency: 'USD',
+    currency: 'TND',
     timezone: 'America/New_York',
     emailNotifications: true,
     smsNotifications: false,
@@ -123,6 +123,7 @@ export function Settings() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors duration-200"
                 >
                   <option value="USD">USD - US Dollar</option>
+                  <option value="TND">TND - Tunisian Dinar</option>
                   <option value="EUR">EUR - Euro</option>
                   <option value="GBP">GBP - British Pound</option>
                   <option value="CAD">CAD - Canadian Dollar</option>

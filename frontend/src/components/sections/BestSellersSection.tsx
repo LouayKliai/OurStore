@@ -1,18 +1,36 @@
 'use client';
 
 import Link from 'next/link';
+
+import { useEffect, useState } from 'react';
 import { Product } from '@/lib/types';
+import { getBestsellers } from '@/lib/api';
 import { ProductCard } from '@/components/product/ProductCard';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Button } from '@/components/ui/Button';
 
-interface BestSellersProps {
-  products: Product[];
-  loading: boolean;
-}
 
-export function BestSellersSection({ products, loading }: BestSellersProps) {
+
+export function BestSellersSection() {
   const { t } = useTranslation();
+  const [bestsellers, setBestsellers] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchBestsellers() {
+      setLoading(true);
+      try {
+        const data = await getBestsellers();
+        setBestsellers(data.bestsellers || []);
+      } catch (error) {
+        console.error('Error fetching bestsellers:', error);
+        setBestsellers([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchBestsellers();
+  }, []);
 
   return (
     <section id="products" className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-10 sm:py-14 md:py-18">
@@ -25,7 +43,7 @@ export function BestSellersSection({ products, loading }: BestSellersProps) {
         </p>
       </div>
 
-            {loading ? (
+      {loading ? (
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {[...Array(3)].map((_, index) => (
             <div key={index} className="animate-pulse bg-white rounded-lg border border-gray-200 p-3 sm:p-4">
@@ -40,13 +58,13 @@ export function BestSellersSection({ products, loading }: BestSellersProps) {
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
-          {products.slice(0, 3).map((product) => (
+          {bestsellers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}
-      
-      {products.length > 0 && (
+
+      {bestsellers.length > 0 && (
         <div className="text-center mt-10">
           <Link href="/products">
             <Button size="lg" className="transition-colors w-full sm:w-auto">

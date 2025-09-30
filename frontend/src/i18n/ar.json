@@ -88,9 +88,18 @@
       "tech": "تكنولوجيا",
       "technology": "تكنولوجيا",
       "beauty_perfumes": "جمال وعطور",
-      "clothes_description": "ملابس أنيقة ومريحة لكل مناسبة",
-      "tech_description": "أحدث الأجهزة وإكسسوارات التكنولوجيا",
-      "beauty_perfumes_description": "منتجات تجميل وعطور مميزة",
+      "electronics": "إلكترونيات",
+      "electronics_description": "أحدث الإلكترونيات وأجهزة المنزل",
+      "clothing": "ملابس",
+      "clothing_description": "أزياء وملابس لجميع الأعمار",
+      "home_garden": "المنزل والحديقة",
+      "home_garden_description": "كل شيء لمنزلك وحديقتك",
+      "books": "كتب",
+      "books_description": "كتب وكتب إلكترونية وكتب صوتية",
+      "sports_outdoors": "رياضة وهواء طلق",
+      "sports_outdoors_description": "معدات رياضية ومعدات هواء طلق",
+      "beauty_health": "جمال وصحة",
+      "beauty_health_description": "منتجات تجميل ومكملات غذائية",
       "shop": "تسوق",
       "featuredProducts": "منتجات مميزة"
       
@@ -208,6 +217,7 @@
       "submit": "إرسال"
     },
     "info": {
+      "title": "معلومات الاتصال",
       "email": {
         "title": "البريد الإلكتروني",
         "address": "عنوان البريد الإلكتروني",
@@ -349,5 +359,67 @@
     "subtitle": "اكتشف مجموعة واسعة من المنتجات عالية الجودة التي تلبي جميع احتياجاتك.",
     "browseProducts": "تصفح جميع المنتجات",
     "viewOrders": "عرض الطلبات"
+  },
+
+  "order":{
+    "orderConfirmed": "تم تأكيد طلبك!",
+    "orderConfirmationMessage": "شكراً لطلبك. لقد استلمنا عملية الشراء الخاصة بك وسنعمل على معالجتها قريباً.",
+    "Order": "طلب",
+    "orderId": "معرف الطلب",
+    "date": "التاريخ",
+    "status": "الحالة",
+    "contactInformation": "معلومات الاتصال",
+    "orderInformation": "معلومات الطلب",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "address": "عنوان التسليم",
+    "itemsOrdered": "العناصر المطلوبة",
+    "orderDetails": "تفاصيل الطلب",
+    "orderItems": "عناصر الطلب",
+    "product": "المنتج",
+    "price": "السعر",
+    "each": "لكل",
+    "size": "المقاس",
+    "qty": "الكمية",
+    "total": "المجموع",
+    "continueShopping": "متابعة التسوق",
+    "printOrderDetails": "طباعة تفاصيل الطلب",
+    "nextSteps": {
+      "title": "الخطوات التالية",
+      "confirmation": "سيتواصل فريقنا معك خلال 24 ساعة لتأكيد تفاصيل طلبك.",
+      "delivery": "سنقوم بترتيب التوصيل إلى العنوان الذي حددته.",
+      "payment": "سيتم تحصيل الدفع عند التوصيل."
+  },
+  "status": {
+    "pending": "قيد الانتظار",
+    "processing": "قيد المعالجة",
+    "shipped": "تم الشحن",
+    "delivered": "تم التوصيل",
+    "cancelled": "ملغي",
+    "refunded": "تم الاسترداد"
   }
+},
+"product": {
+    "color": "لون",
+    "size": "مقاس",
+    "sizes": "مقاسات",
+    "save": "وفر",
+    "colors": {
+      "title": "ألوان",
+      "Red": "أحمر",
+      "Blue": "أزرق",
+      "Green": "أخضر",
+      "Black": "أسود",
+      "White": "أبيض",
+      "Yellow": "أصفر",
+      "Pink": "وردي",
+      "Purple": "بنفسجي",
+      "Gray": "رمادي",
+      "Orange": "برتقالي",
+      "Brown": "بني",
+      "Silver": "فضي",
+      "Gold": "ذهبي"
+    }
+}
 }

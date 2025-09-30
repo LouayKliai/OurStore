@@ -38,6 +38,11 @@ def create_app(config_name=None):
     from app.api import register_blueprints
     register_blueprints(app)
     
+    # Initialize Cloudinary for image uploads
+    from app.utils.image_upload import init_cloudinary
+    with app.app_context():
+        init_cloudinary()
+    
     # Register error handlers
     register_error_handlers(app)
     

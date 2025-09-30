@@ -15,14 +15,12 @@ A modern, full-stack e-commerce platform built with Next.js frontend and Flask b
 - **Customer Profiles**: Manage personal information and preferences
 - **Newsletter Subscription**: Stay updated with latest products
 
-### 👨‍💼 Admin Features
-- **Dashboard Analytics**: Real-time sales and inventory statistics
-- **Product Management**: Add, edit, and manage product catalog
-- **Order Management**: Process and track customer orders
-- **Customer Management**: View and manage customer accounts
-- **Inventory Control**: Track stock levels and adjust inventory
-- **Sales Reports**: Detailed sales analytics and reporting
-- **Low Stock Alerts**: Monitor products with low inventory
+### �️ Image Storage
+- **Cloudinary Integration**: Free 25GB cloud storage for product images
+- **Automatic Optimization**: Images are compressed and resized automatically
+- **Multiple Upload**: Support for single and batch image uploads
+- **Admin Interface**: Easy image management in the admin panel
+- **Fallback Storage**: Local storage option if cloud storage is unavailable
 
 ## 🏗️ Architecture
 
@@ -123,6 +121,21 @@ python init_db.py
 python app_enhanced.py
 ```
 The API will be available at `http://localhost:5000`
+
+### 4. Image Storage Setup (Optional)
+```bash
+# Quick Cloudinary setup (free 25GB storage)
+./setup_cloudinary.sh
+
+# Or configure manually in Back/.env:
+# CLOUDINARY_CLOUD_NAME=your-cloud-name
+# CLOUDINARY_API_KEY=your-api-key
+# CLOUDINARY_API_SECRET=your-api-secret
+# USE_CLOUDINARY=true
+
+# Test image upload
+python test_images.py
+```
 
 ## 🗄️ Database Schema
 
