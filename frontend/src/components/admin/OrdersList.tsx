@@ -17,7 +17,7 @@ export function OrdersList() {
       try {
         setLoading(true);
         const data = await getOrders();
-        setOrders(data);
+        setOrders(data.items); // Extract items from paginated response
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to fetch orders');
@@ -33,7 +33,7 @@ export function OrdersList() {
     try {
       setLoading(true);
       const data = await getOrders();
-      setOrders(data);
+      setOrders(data.items); // Extract items from paginated response
       setError(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch orders');
@@ -114,20 +114,30 @@ export function OrdersList() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <p className="text-sm font-medium text-gray-900">Product</p>
-                <p className="text-sm text-gray-600">{order.product}</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-gray-900">Quantity</p>
-                <p className="text-sm text-gray-600">{order.quantity}</p>
-              </div>
-              {order.color && (
-                <div>
-                  <p className="text-sm font-medium text-gray-900">Color</p>
-                  <p className="text-sm text-gray-600">{order.color}</p>
-                </div>
+            <div className="grid grid-cols-1 gap-4">
+              {order.items && order.items.length > 0 ? (
+                order.items.map((item, index) => (
+                  <div key={item.id || index} className="border-b pb-2 last:border-b-0 last:pb-0">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">Product</p>
+                        <p className="text-sm text-gray-600">{item.product?.name || 'Unknown Product'}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">Quantity</p>
+                        <p className="text-sm text-gray-600">{item.quantity}</p>
+                      </div>
+                      {item.color && (
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">Color</p>
+                          <p className="text-sm text-gray-600">{item.color}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="text-sm text-gray-500">No items in this order</div>
               )}
             </div>
 
