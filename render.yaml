@@ -12,9 +12,7 @@ services:
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
-        fromDatabase:
-          name: ourstore-db
-          property: connectionString
+        sync: false  # You'll set this manually after creating the database
       - key: CORS_ORIGINS
         value: https://your-frontend-domain.onrender.com
       - key: CLOUDINARY_CLOUD_NAME
