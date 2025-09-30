@@ -3,6 +3,7 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "env": {
+    "NODE_ENV": "production",
     "NEXT_PUBLIC_API_URL": "https://ourstore-3si3.onrender.com"
   }
 }
