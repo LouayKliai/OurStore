@@ -130,6 +130,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Product management scripts (sensitive)
+Back/manage/
+
 # ================================
 # Node.js / Next.js Frontend
 # ================================
