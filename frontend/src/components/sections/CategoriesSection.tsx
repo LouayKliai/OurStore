@@ -25,6 +25,12 @@ interface CategoriesSectionProps {
 export function CategoriesSection({ categories, categoryPreviews, loading }: CategoriesSectionProps) {
   const { t } = useTranslation();
 
+  // Filter categories to only show those with products
+  const categoriesWithProducts = categories.filter(category => {
+    const products = categoryPreviews[category.id.toString()] || [];
+    return products.length > 0;
+  });
+
   // Helper function to get icon and color for category
   const getCategoryStyle = (categoryName: string) => {
     const name = categoryName.toLowerCase();
@@ -78,8 +84,17 @@ export function CategoriesSection({ categories, categoryPreviews, loading }: Cat
           </p>
         </div>
 
+        {categoriesWithProducts.length === 0 && !loading && (
+          <div className="text-center py-12">
+            <p className="text-lg text-gray-600">
+              {t('products.categories.noCategories') || 'No categories with products available at the moment.'}
+            </p>
+          </div>
+        )}
+
         <div className="space-y-16">
-          {categories.map((category, index) => (
+          {categoriesWithProducts
+            .map((category, index) => (
             <div key={category.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
               {/* Category Info */}
               <div className={`space-y-6 text-center lg:text-left ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
