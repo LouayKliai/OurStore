@@ -40,9 +40,9 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold text-primary-100 mb-4">{t('footer.contact.title')}</h3>
             <div className="space-y-2 text-sm text-primary-200">
-              <p>{t('footer.contact.email')}: info@ourstore.com</p>
-              <p>{t('footer.contact.phone')}: +1 (555) 123-4567</p>
-              <p>{t('footer.contact.address')}: 123 Store Street, City, State 12345</p>
+              <p>{t('footer.contact.email')}: {process.env.NEXT_PUBLIC_CONTACT_EMAIL}</p>
+              <p>{t('footer.contact.phone')}: {process.env.NEXT_PUBLIC_CONTACT_PHONE}</p>
+              <p>{t('footer.contact.address')}: {process.env.NEXT_PUBLIC_CONTACT_ADDRESS}</p>
             </div>
           </div>
         </div>
